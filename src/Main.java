@@ -12,12 +12,11 @@ public class Main {
         Hotel hotel = new Hotel("ABC123", "Hotel California", "Via Roma 100, Firenze", "Firenze", "Italia", 5);
 
         // Crea una prenotazione
-        Booking booking = new Booking(customer, flight, hotel);
-
+        //Booking booking = new Booking(customer, flight, hotel, new PayPalStrategy(), new ConcreteBookingMediator());
         // Seleziona un metodo di pagamento
         PaymentStrategy strategy = new PayPalStrategy();
 
         // Effettua il pagamento
-        strategy.pay(booking);
+        //strategy.pay(booking);
     }
 }
