@@ -5,14 +5,28 @@ public class ConcreteBookingMediator implements BookingMediator {
         this.travelAgency = travelAgency;
     }
 
+    public void setTravelAgency(TravelAgency travelAgency) {
+        this.travelAgency = travelAgency;
+    }
+
     @Override
     public void bookFlightAndHotel(Booking booking) {
-        // Logica per coordinare la prenotazione del volo e dell'hotel
-        // Utilizzando Flight, Hotel, Customer, e altri dettagli da Booking.
-        // Ad esempio, puoi inviare conferme o aggiornamenti alle parti interessate.
+        // Estrai i dettagli dalla prenotazione
+        Customer customer = booking.getCustomer();
+        Flight flight = booking.getFlight();
+        Hotel hotel = booking.getHotel();
 
-        // Esempio: Stampa un messaggio di conferma.
-        System.out.println("Prenotazione confermata per " + booking.getCustomer().getName());
+        // Esegui la prenotazione del volo
+        System.out.println("Prenotazione del volo con id " + flight.getId() + " per " + customer.getName());
+
+        // Esegui la prenotazione dell'hotel
+        System.out.println("Prenotazione dell'hotel " + hotel.getName() + " per " + customer.getName());
+
+        // Invia conferma al cliente
+        sendConfirmation(customer, "Prenotazione confermata per volo e hotel.");
+
+        // Aggiorna lo stato della prenotazione
+        booking.setBookingStatus("Confermata");
     }
 
     @Override
@@ -22,5 +36,10 @@ public class ConcreteBookingMediator implements BookingMediator {
 
         // Esempio: Stampa un messaggio di cancellazione.
         System.out.println("Prenotazione annullata per " + booking.getCustomer().getName());
+    }
+
+    private void sendConfirmation(Customer customer, String message) {
+        // Simula l'invio di una conferma al cliente
+        System.out.println("Invio conferma a " + customer.getEmail() + ": " + message);
     }
 }
