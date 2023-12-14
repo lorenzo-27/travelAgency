@@ -12,7 +12,7 @@ public class TravelAgency {
     }
 
     public Booking createBooking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy) {
-        Booking booking = new Booking(customer, flight, hotel, strategy, mediator);
+        Booking booking = new Booking(customer, flight, hotel, strategy, mediator, "pending");
         this.bookings.add(booking);
         return booking;
     }
@@ -20,6 +20,10 @@ public class TravelAgency {
     public void cancelBooking(Booking booking) {
         this.bookings.remove(booking);
         booking.cancelBooking();
+    }
+
+    public void setMediator(BookingMediator mediator) {
+        this.mediator = mediator;
     }
 
 }
