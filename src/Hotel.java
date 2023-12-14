@@ -6,14 +6,16 @@ public class Hotel {
     private String city;
     private String country;
     private int stars;
+    private int price;
 
-    public Hotel(String id, String name, String address, String city, String country, int stars) {
+    public Hotel(String id, String name, String address, String city, String country, int price) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.city = city;
         this.country = country;
         this.stars = stars;
+        this.price = price;
     }
 
     public String getId() {
@@ -39,5 +41,7 @@ public class Hotel {
     public int getStars() {
         return stars;
     }
+
+    public int getPrice() { return price; }
 
 }
