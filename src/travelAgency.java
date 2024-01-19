@@ -4,33 +4,26 @@ import java.util.List;
 public class travelAgency {
 
     private List<booking> bookings;
-    private bookingMediator mediator;
+    private concreteBookingMediator mediator;
 
-    public travelAgency(bookingMediator mediator) {
+    public travelAgency(concreteBookingMediator mediator) {
         this.bookings = new ArrayList<>();
         this.mediator = mediator;
     }
 
     public booking createBooking(customer customer, flight flight, hotel hotel, paymentStrategy strategy, String bookingStatus) {
-        booking booking = new booking(customer, flight, hotel, strategy, mediator, bookingStatus);
+        booking booking = mediator.createBooking(customer, flight, hotel, strategy, bookingStatus);
         this.bookings.add(booking);
-        booking.confirmBooking();
-        booking.setBookingStatus("Confermata");
         return booking;
     }
 
     public void cancelBooking(booking booking) {
         this.bookings.remove(booking);
-        booking.cancelBooking();
-        booking.setBookingStatus("Annullata");
+        mediator.cancelBooking(booking);
     }
 
-    public void setMediator(bookingMediator mediator) {
-        this.mediator = mediator;
-    }
-
-    public bookingMediator getMediator() {
-        return mediator;
+    public List<booking> getAllBookings() {
+        return new ArrayList<>(bookings);
     }
 
 }
