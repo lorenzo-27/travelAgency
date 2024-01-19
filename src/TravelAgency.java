@@ -11,8 +11,8 @@ public class TravelAgency {
         this.mediator = mediator;
     }
 
-    public Booking createBooking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy) {
-        Booking booking = new Booking(customer, flight, hotel, strategy, mediator, "pending");
+    public Booking createBooking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy, String bookingStatus) {
+        Booking booking = new Booking(customer, flight, hotel, strategy, mediator, bookingStatus);
         this.bookings.add(booking);
         return booking;
     }
@@ -24,6 +24,10 @@ public class TravelAgency {
 
     public void setMediator(BookingMediator mediator) {
         this.mediator = mediator;
+    }
+
+    public BookingMediator getMediator() {
+        return mediator;
     }
 
 }
