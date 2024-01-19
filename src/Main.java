@@ -11,12 +11,22 @@ public class Main {
         // Crea un hotel
         Hotel hotel = new Hotel("ABC123", "Hotel California", "Via Roma 100, Firenze", "Firenze", "Italia", 5);
 
-        // Crea una prenotazione
-        //Booking booking = new Booking(customer, flight, hotel, new PayPalStrategy(), new ConcreteBookingMediator());
-        // Seleziona un metodo di pagamento
+        // Crea una strategia di pagamento
         PaymentStrategy strategy = new PayPalStrategy();
 
+        // Crea un'agenzia di viaggi con un mediatore
+        ConcreteBookingMediator mediator = new ConcreteBookingMediator(new TravelAgency(null));
+        TravelAgency travelAgency = new TravelAgency(mediator);
+
+        // Associa il mediatore all'agenzia di viaggi
+        mediator.setTravelAgency(travelAgency);
+        mediator.bookFlightAndHotel(new Booking(customer, flight, hotel, strategy, mediator, "pending"));
+
+        // Crea una prenotazione
+        Booking booking = travelAgency.createBooking(customer, flight, hotel, strategy, "pending");
+
         // Effettua il pagamento
-        //strategy.pay(booking);
+        strategy.pay(booking);
+        // System.out.println("Pagamento effettuato con " + booking.getStrategy());
     }
 }
