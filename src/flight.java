@@ -10,8 +10,9 @@ public class flight {
     private LocalDateTime arrivalDateTime;
     private int duration;
     private int price;
+    private int nAvailableSeats;
 
-    public flight(String id, String airline, String departureAirport, String arrivalAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int duration, int price) {
+    public flight(String id, String airline, String departureAirport, String arrivalAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int duration, int price, int nAvailableSeats) {
         this.id = id;
         this.airline = airline;
         this.departureAirport = departureAirport;
@@ -20,6 +21,7 @@ public class flight {
         this.arrivalDateTime = arrivalDateTime;
         this.duration = duration;
         this.price = price;
+        this.nAvailableSeats = nAvailableSeats;
     }
 
     public String getId() {
@@ -52,6 +54,30 @@ public class flight {
 
     public int getPrice() {
         return price;
+    }
+
+    public int getNAvailableSeats() {
+        return nAvailableSeats;
+    }
+
+    public void setNAvailableSeats(int nAvailableSeats) {
+        this.nAvailableSeats = nAvailableSeats;
+    }
+
+    public void decreaseNAvailableSeats() {
+        this.nAvailableSeats--;
+    }
+
+    public void increaseNAvailableSeats() {
+        this.nAvailableSeats++;
+    }
+
+    public void checkAvailability() {
+        if (nAvailableSeats > 0) {
+            System.out.println("Ci sono " + nAvailableSeats + " posti disponibili per questo volo.");
+        } else {
+            System.out.println("Non ci sono posti disponibili per questo volo.");
+        }
     }
 
 }
