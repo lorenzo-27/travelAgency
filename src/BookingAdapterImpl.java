@@ -13,13 +13,30 @@ public class BookingAdapterImpl implements BookingAdapter {
 
     @Override
     public boolean isValid(String paymentInfo) {
-        // Implementa la logica di validità del pagamento, se necessario
-        return true;
+        if (paymentInfo == null) {
+            return false;
+        }
+        else
+            return true;
     }
 
     @Override
     public String getType() {
         // Restituisci il tipo di strategia di pagamento, se necessario
-        return "BookingAdapter";
+        if (booking.getStrategy() instanceof PayPalStrategy) {
+            return "PayPalStrategy";
+        }
+        else if (booking.getStrategy() instanceof VisaCreditCardStrategy) {
+            return "VisaCardStrategy";
+        }
+        else if (booking.getStrategy() instanceof AmericanExpressCreditCardStrategy) {
+            return "AmericanExpressCardStrategy";
+        }
+        else if (booking.getStrategy() instanceof MasterCardCreditCardStrategy) {
+            return "MasterCardCardStrategy";
+        }
+        else {
+            return "UnknownStrategy";
+        }
     }
 }
