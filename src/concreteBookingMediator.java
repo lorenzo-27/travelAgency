@@ -33,7 +33,12 @@ public class concreteBookingMediator implements bookingMediator {
         }
         else {
             // Invia conferma al cliente
-            sendConfirmation(customer, " prenotazione non confermata per volo e hotel (posti esauriti).");
+            if (flight.getNAvailableSeats() == 0) {
+                sendConfirmation(customer, "prenotazione non confermata per volo (posti esauriti).");
+            }
+            else {
+                sendConfirmation(customer, "prenotazione non confermata per hotel (camere esaurite).");
+            }
 
             // Aggiorna lo stato della prenotazione
             booking.setBookingStatus("Annullata");
