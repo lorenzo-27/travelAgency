@@ -1,5 +1,5 @@
-public interface PaymentStrategy {
-    void pay(Booking booking);
+public interface paymentStrategy {
+    void pay(booking booking);
 
     boolean isValid(String paymentInfo);
 

@@ -1,6 +1,6 @@
-public class VisaCreditCardStrategy implements PaymentStrategy {
+public class visaCreditCardStrategy implements paymentStrategy {
     @Override
-    public void pay(Booking booking) {
+    public void pay(booking booking) {
         // Effettua il pagamento con carta di credito Visa
     }
 

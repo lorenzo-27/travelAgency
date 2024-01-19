@@ -1,6 +1,6 @@
-public class MasterCardCreditCardStrategy implements PaymentStrategy {
+public class masterCardCreditCardStrategy implements paymentStrategy {
     @Override
-    public void pay(Booking booking) {
+    public void pay(booking booking) {
         // Effettua il pagamento con carta di credito MasterCard
     }
 

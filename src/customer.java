@@ -1,10 +1,10 @@
-public class Customer {
+public class customer {
 
     private String name;
     private String email;
     private String phone;
 
-    public Customer(String name, String email, String phone) {
+    public customer(String name, String email, String phone) {
         this.name = name;
         this.email = email;
         this.phone = phone;

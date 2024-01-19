@@ -1,20 +1,20 @@
-public class ConcreteBookingMediator implements BookingMediator {
-    private TravelAgency travelAgency;
+public class concreteBookingMediator implements bookingMediator {
+    private travelAgency travelAgency;
 
-    public ConcreteBookingMediator(TravelAgency travelAgency) {
+    public concreteBookingMediator(travelAgency travelAgency) {
         this.travelAgency = travelAgency;
     }
 
-    public void setTravelAgency(TravelAgency travelAgency) {
+    public void setTravelAgency(travelAgency travelAgency) {
         this.travelAgency = travelAgency;
     }
 
     @Override
-    public void bookFlightAndHotel(Booking booking) {
+    public void bookFlightAndHotel(booking booking) {
         // Estrai i dettagli dalla prenotazione
-        Customer customer = booking.getCustomer();
-        Flight flight = booking.getFlight();
-        Hotel hotel = booking.getHotel();
+        customer customer = booking.getCustomer();
+        flight flight = booking.getFlight();
+        hotel hotel = booking.getHotel();
 
         // Esegui la prenotazione del volo
         System.out.println("Prenotazione del volo con id " + flight.getId() + " per " + customer.getName());
@@ -30,7 +30,7 @@ public class ConcreteBookingMediator implements BookingMediator {
     }
 
     @Override
-    public void cancelBooking(Booking booking) {
+    public void cancelBooking(booking booking) {
         // Stampa messaggio di cancellazione.
         System.out.println("Prenotazione annullata per " + booking.getCustomer().getName());
 
@@ -41,7 +41,7 @@ public class ConcreteBookingMediator implements BookingMediator {
         booking.setBookingStatus("Annullata");
     }
 
-    private void sendConfirmation(Customer customer, String message) {
+    private void sendConfirmation(customer customer, String message) {
         // Simula l'invio di una conferma al cliente
         System.out.println("Invio conferma a " + customer.getEmail() + ": " + message);
     }

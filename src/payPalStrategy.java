@@ -1,7 +1,7 @@
-public class PayPalStrategy implements PaymentStrategy {
+public class payPalStrategy implements paymentStrategy {
 
     @Override
-    public void pay(Booking booking) {
+    public void pay(booking booking) {
         // Effettua il pagamento con PayPal
     }
 

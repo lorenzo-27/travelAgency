@@ -1,6 +1,6 @@
 import java.time.LocalDateTime;
 
-public class Flight {
+public class flight {
 
     private String id;
     private String airline;
@@ -11,7 +11,7 @@ public class Flight {
     private int duration;
     private int price;
 
-    public Flight(String id, String airline, String departureAirport, String arrivalAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int duration, int price) {
+    public flight(String id, String airline, String departureAirport, String arrivalAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int duration, int price) {
         this.id = id;
         this.airline = airline;
         this.departureAirport = departureAirport;

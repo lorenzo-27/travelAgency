@@ -1,4 +1,4 @@
-public class Hotel {
+public class hotel {
 
     private String id;
     private String name;
@@ -8,7 +8,7 @@ public class Hotel {
     private int stars;
     private int price;
 
-    public Hotel(String id, String name, String address, String city, String country, int price) {
+    public hotel(String id, String name, String address, String city, String country, int price) {
         this.id = id;
         this.name = name;
         this.address = address;

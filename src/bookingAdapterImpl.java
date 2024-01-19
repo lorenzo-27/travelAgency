@@ -1,12 +1,12 @@
-public class BookingAdapterImpl implements BookingAdapter {
-    private Booking booking;
+public class bookingAdapterImpl implements bookingAdapter {
+    private booking booking;
 
-    public BookingAdapterImpl(Booking booking) {
+    public bookingAdapterImpl(booking booking) {
         this.booking = booking;
     }
 
     @Override
-    public void pay(Booking booking) {
+    public void pay(booking booking) {
         // Utilizza l'oggetto Booking per effettuare il pagamento
         booking.pay();
     }
@@ -19,16 +19,16 @@ public class BookingAdapterImpl implements BookingAdapter {
     @Override
     public String getType() {
         // Restituisci il tipo di strategia di pagamento, se necessario
-        if (booking.getStrategy() instanceof PayPalStrategy) {
+        if (booking.getStrategy() instanceof payPalStrategy) {
             return "PayPalStrategy";
         }
-        else if (booking.getStrategy() instanceof VisaCreditCardStrategy) {
+        else if (booking.getStrategy() instanceof visaCreditCardStrategy) {
             return "VisaCardStrategy";
         }
-        else if (booking.getStrategy() instanceof AmericanExpressCreditCardStrategy) {
+        else if (booking.getStrategy() instanceof americanExpressCreditCardStrategy) {
             return "AmericanExpressCardStrategy";
         }
-        else if (booking.getStrategy() instanceof MasterCardCreditCardStrategy) {
+        else if (booking.getStrategy() instanceof masterCardCreditCardStrategy) {
             return "MasterCardCardStrategy";
         }
         else {

@@ -1,6 +1,6 @@
-public class AmericanExpressCreditCardStrategy implements PaymentStrategy {
+public class americanExpressCreditCardStrategy implements paymentStrategy {
     @Override
-    public void pay(Booking booking) {
+    public void pay(booking booking) {
         // Effettua il pagamento con carta di credito American Express
     }
 

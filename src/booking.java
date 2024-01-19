@@ -1,13 +1,13 @@
-public class Booking {
+public class booking {
 
-    private Customer customer;
-    private Flight flight;
-    private Hotel hotel;
-    private PaymentStrategy strategy;
-    private BookingMediator mediator;
+    private customer customer;
+    private flight flight;
+    private hotel hotel;
+    private paymentStrategy strategy;
+    private bookingMediator mediator;
     private String bookingStatus;
 
-    public Booking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy, BookingMediator mediator, String bookingStatus) {
+    public booking(customer customer, flight flight, hotel hotel, paymentStrategy strategy, bookingMediator mediator, String bookingStatus) {
         this.customer = customer;
         this.flight = flight;
         this.hotel = hotel;
@@ -16,23 +16,23 @@ public class Booking {
         this.bookingStatus = bookingStatus;
     }
 
-    public Customer getCustomer() {
+    public customer getCustomer() {
         return customer;
     }
 
-    public Flight getFlight() {
+    public flight getFlight() {
         return flight;
     }
 
-    public Hotel getHotel() {
+    public hotel getHotel() {
         return hotel;
     }
 
-    public PaymentStrategy getStrategy() {
-        return new BookingAdapterImpl(this);
+    public paymentStrategy getStrategy() {
+        return new bookingAdapterImpl(this);
     }
 
-    public BookingMediator getMediator() {
+    public bookingMediator getMediator() {
         return mediator;
     }
 
