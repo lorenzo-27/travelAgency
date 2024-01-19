@@ -72,12 +72,4 @@ public class flight {
         this.nAvailableSeats++;
     }
 
-    public void checkAvailability() {
-        if (nAvailableSeats > 0) {
-            System.out.println("Ci sono " + nAvailableSeats + " posti disponibili per questo volo.");
-        } else {
-            System.out.println("Non ci sono posti disponibili per questo volo.");
-        }
-    }
-
 }
