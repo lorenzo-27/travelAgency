@@ -23,7 +23,7 @@ public class ConcreteBookingMediator implements BookingMediator {
         System.out.println("Prenotazione dell'hotel " + hotel.getName() + " per " + customer.getName());
 
         // Invia conferma al cliente
-        sendConfirmation(customer, "Prenotazione confermata per volo e hotel.");
+        sendConfirmation(customer, "prenotazione confermata per volo e hotel.");
 
         // Aggiorna lo stato della prenotazione
         booking.setBookingStatus("Confermata");
@@ -31,11 +31,14 @@ public class ConcreteBookingMediator implements BookingMediator {
 
     @Override
     public void cancelBooking(Booking booking) {
-        // Logica per annullare la prenotazione
-        // Può coinvolgere l'invio di notifiche o l'aggiornamento di altri sistemi.
-
-        // Esempio: Stampa un messaggio di cancellazione.
+        // Stampa messaggio di cancellazione.
         System.out.println("Prenotazione annullata per " + booking.getCustomer().getName());
+
+        // Invia conferma al cliente
+        sendConfirmation(booking.getCustomer(), "prenotazione annullata.");
+
+        // Aggiorna lo stato della prenotazione
+        booking.setBookingStatus("Annullata");
     }
 
     private void sendConfirmation(Customer customer, String message) {
