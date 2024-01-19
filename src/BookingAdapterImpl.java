@@ -13,11 +13,7 @@ public class BookingAdapterImpl implements BookingAdapter {
 
     @Override
     public boolean isValid(String paymentInfo) {
-        if (paymentInfo == null) {
-            return false;
-        }
-        else
-            return true;
+        return paymentInfo != null;
     }
 
     @Override
