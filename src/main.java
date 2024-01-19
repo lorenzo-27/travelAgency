@@ -16,19 +16,15 @@ public class main {
         // Crea una strategia di pagamento
         paymentStrategy strategy = new payPalStrategy();
 
-        // Crea un'agenzia di viaggi con un mediatore
-        concreteBookingMediator mediator = new concreteBookingMediator(new travelAgency(null));
-        travelAgency travelAgency = new travelAgency(mediator);
-
-        // Associa il mediatore all'agenzia di viaggi
-        mediator.setTravelAgency(travelAgency);
-        //mediator.bookFlightAndHotel(new booking(customer, flight, hotel, strategy, mediator, "pending"));
+        // Crea un mediatore e un'agenzia di viaggi
+        travelAgency travelAgency = null;
+        concreteBookingMediator mediator = new concreteBookingMediator(travelAgency);
+        travelAgency = new travelAgency(mediator);
 
         // Crea una prenotazione
         booking booking = travelAgency.createBooking(customer, flight, hotel, strategy, "pending");
 
         // Effettua il pagamento
         strategy.pay(booking);
-        // System.out.println("Pagamento effettuato con " + booking.getStrategy());
     }
 }
