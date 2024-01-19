@@ -1,4 +1,4 @@
 public interface bookingMediator {
-    void bookFlightAndHotel(booking booking);
+    booking createBooking(customer customer, flight flight, hotel hotel, paymentStrategy strategy, String bookingStatus);
     void cancelBooking(booking booking);
 }
