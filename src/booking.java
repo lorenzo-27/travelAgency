@@ -44,14 +44,6 @@ public class booking {
         strategy.pay(this);
     }
 
-    public void confirmBooking() {
-        mediator.bookFlightAndHotel(this);
-    }
-
-    public void cancelBooking() {
-        mediator.cancelBooking(this);
-    }
-
     public String getBookingStatus() {
         return bookingStatus;
     }
