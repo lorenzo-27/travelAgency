@@ -7,8 +7,9 @@ public class hotel {
     private String country;
     private int stars;
     private int price;
+    private int nAvailableRooms;
 
-    public hotel(String id, String name, String address, String city, String country, int price) {
+    public hotel(String id, String name, String address, String city, String country, int price, int nAvailableRooms) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -16,6 +17,7 @@ public class hotel {
         this.country = country;
         this.stars = stars;
         this.price = price;
+        this.nAvailableRooms = nAvailableRooms;
     }
 
     public String getId() {
@@ -43,5 +45,21 @@ public class hotel {
     }
 
     public int getPrice() { return price; }
+
+    public int getNAvailableRooms() {
+        return nAvailableRooms;
+    }
+
+    public void decreaseNAvailableRooms() {
+        nAvailableRooms--;
+    }
+
+    public void increaseNAvailableRooms() {
+        nAvailableRooms++;
+    }
+
+    public void setNAvailableRooms(int nAvailableRooms) {
+        this.nAvailableRooms = nAvailableRooms;
+    }
 
 }
