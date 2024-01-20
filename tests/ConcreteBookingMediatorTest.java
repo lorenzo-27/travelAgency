@@ -23,6 +23,11 @@ public class ConcreteBookingMediatorTest {
 
     @After
     public void tearDown() throws Exception {
+        mediator = null;
+        customer = null;
+        flight = null;
+        hotel = null;
+        paymentStrategy = null;
     }
 
     @Test
