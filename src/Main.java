@@ -27,7 +27,7 @@ public class Main {
         List<Customer> Customers = createCustomers(numCustomers);
 
         // Creazione di un oggetto ConcreteBookingMediator
-        ConcreteBookingMediator mediator = new ConcreteBookingMediator(new TravelAgency(null));
+        ConcreteBookingMediator mediator = new ConcreteBookingMediator();
 
         // Creazione di prenotazioni casuali per i clienti
         Random random = new Random();

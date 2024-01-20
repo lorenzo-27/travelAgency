@@ -3,11 +3,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class ConcreteBookingMediator implements BookingMediator {
-    private List<Booking> Bookings;
-    private TravelAgency travelAgency;
+    private final List<Booking> Bookings;
 
-    public ConcreteBookingMediator(TravelAgency travelAgency) {
-        this.travelAgency = travelAgency;
+    public ConcreteBookingMediator() {
         this.Bookings = new ArrayList<>();
     }
 
