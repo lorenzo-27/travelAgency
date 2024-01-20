@@ -1,5 +1,5 @@
 public class BookingAdapterImpl implements BookingAdapter {
-    private Booking booking;
+    private final Booking booking;
 
     public BookingAdapterImpl(Booking booking) {
         this.booking = booking;
