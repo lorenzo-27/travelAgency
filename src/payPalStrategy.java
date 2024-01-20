@@ -1,6 +1,6 @@
 public class payPalStrategy implements paymentStrategy {
 
-    private static final double PAYPAL_COMMISSION_RATE = 0.02; // 2% commission for PayPal payments
+    private static final double PAYPAL_COMMISSION_RATE = 0.02; // 2% commissione di PayPal
 
     @Override
     public void pay(booking booking) {
@@ -13,7 +13,7 @@ public class payPalStrategy implements paymentStrategy {
         double totalAmount = totalPrice + commission;
 
         // Esegue il pagamento
-        System.out.println("Effettuare il pagamento di €" + totalAmount + " con PayPal per l'utente " + customerEmail);
+        System.out.println("Effettuato il pagamento di €" + totalAmount + " con PayPal per l'utente " + customerEmail);
         System.out.println("Commissioni PayPal: €" + commission);
     }
 
