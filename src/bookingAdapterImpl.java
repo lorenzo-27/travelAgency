@@ -13,6 +13,7 @@ public class bookingAdapterImpl implements bookingAdapter {
 
     @Override
     public boolean isValid(String paymentInfo) {
+        // Verifica se le informazioni di pagamento sono valide
         return paymentInfo != null;
     }
 

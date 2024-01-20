@@ -29,7 +29,7 @@ public class concreteBookingMediator implements bookingMediator {
             System.out.println("Prenotazione dell'hotel " + hotel.getName() + " per " + customer.getName());
 
             // Invia conferma al cliente
-            sendConfirmation(customer, "prenotazione confermata per volo e hotel.");
+            sendConfirmation(customer, "prenotazione confermata per volo e hotel. Pagamento in corso...");
         }
         else {
             // Invia conferma al cliente
@@ -69,7 +69,7 @@ public class concreteBookingMediator implements bookingMediator {
             booking.setBookingStatus("Annullata");
 
             // Stampa messaggio di cancellazione.
-            System.out.println("Prenotazione annullata per " + booking.getCustomer().getName());
+            System.out.println("Prenotazione annullata per " + booking.getCustomer().getName() + ".");
 
             // Invia conferma al cliente
             sendConfirmation(booking.getCustomer(), "prenotazione annullata.");
