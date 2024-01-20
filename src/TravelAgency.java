@@ -3,8 +3,8 @@ import java.util.List;
 
 public class TravelAgency {
 
-    private List<Booking> Bookings;
-    private ConcreteBookingMediator mediator;
+    private final List<Booking> Bookings;
+    private final ConcreteBookingMediator mediator;
 
     public TravelAgency(ConcreteBookingMediator mediator) {
         this.Bookings = new ArrayList<>();
