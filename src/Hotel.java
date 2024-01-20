@@ -1,12 +1,11 @@
 public class Hotel {
 
-    private String id;
-    private String name;
-    private String address;
-    private String city;
-    private String country;
-    private int stars;
-    private int price;
+    private final String id;
+    private final String name;
+    private final String address;
+    private final String city;
+    private final String country;
+    private final int price;
     private int nAvailableRooms;
 
     public Hotel(String id, String name, String address, String city, String country, int price, int nAvailableRooms) {
@@ -15,7 +14,6 @@ public class Hotel {
         this.address = address;
         this.city = city;
         this.country = country;
-        this.stars = stars;
         this.price = price;
         this.nAvailableRooms = nAvailableRooms;
     }
@@ -38,10 +36,6 @@ public class Hotel {
 
     public String getCountry() {
         return country;
-    }
-
-    public int getStars() {
-        return stars;
     }
 
     public int getPrice() { return price; }
