@@ -1,10 +1,10 @@
 public class Booking {
 
-    private Customer customer;
-    private Flight flight;
-    private Hotel hotel;
-    private PaymentStrategy strategy;
-    private BookingMediator mediator;
+    private final Customer customer;
+    private final Flight flight;
+    private final Hotel hotel;
+    private final PaymentStrategy strategy;
+    private final BookingMediator mediator;
     private String bookingStatus;
 
     public Booking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy, BookingMediator mediator, String bookingStatus) {
@@ -34,10 +34,6 @@ public class Booking {
 
     public BookingMediator getMediator() {
         return mediator;
-    }
-
-    public int getTotalPrice() {
-        return flight.getPrice() + hotel.getPrice();
     }
 
     public void pay() {
