@@ -22,7 +22,7 @@ public class concreteBookingMediator implements bookingMediator {
 
             // Aggiorna lo stato della prenotazione
             bookings.add(booking);
-            booking.setBookingStatus("Confermata");
+            booking.setBookingStatus("confermata");
 
             // Esegui la prenotazione del volo e dell'hotel
             System.out.println("Prenotazione del volo con id " + flight.getId() + " per " + customer.getName());
@@ -41,7 +41,7 @@ public class concreteBookingMediator implements bookingMediator {
             }
 
             // Aggiorna lo stato della prenotazione
-            booking.setBookingStatus("Annullata");
+            booking.setBookingStatus("annullata");
         }
 
         return booking;
@@ -49,7 +49,7 @@ public class concreteBookingMediator implements bookingMediator {
 
     @Override
     public void cancelBooking(booking booking) {
-        if (bookings.contains(booking) && Objects.equals(booking.getBookingStatus(), "Annullata")) {
+        if (bookings.contains(booking) && Objects.equals(booking.getBookingStatus(), "annullata")) {
             System.out.println("La prenotazione è già stata annullata.");
         }
         else if (!bookings.contains(booking)) {
@@ -66,7 +66,7 @@ public class concreteBookingMediator implements bookingMediator {
 
             // Aggiorna lo stato della prenotazione
             bookings.remove(booking);
-            booking.setBookingStatus("Annullata");
+            booking.setBookingStatus("annullata");
 
             // Stampa messaggio di cancellazione.
             System.out.println("Prenotazione annullata per " + booking.getCustomer().getName() + ".");
