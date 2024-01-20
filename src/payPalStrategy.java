@@ -6,7 +6,7 @@ public class payPalStrategy implements paymentStrategy {
     public void pay(booking booking) {
         // Simula il processo di pagamento con PayPal
         String customerEmail = booking.getCustomer().getEmail();
-        int totalPrice = calculateTotalPrice(booking);
+        int totalPrice = booking.calculateTotalPrice(booking);
 
         // Applica la commissione PayPal
         double commission = totalPrice * PAYPAL_COMMISSION_RATE;
@@ -15,13 +15,6 @@ public class payPalStrategy implements paymentStrategy {
         // Esegue il pagamento
         System.out.println("Effettuato il pagamento di €" + totalAmount + " con PayPal per l'utente " + customerEmail);
         System.out.println("Commissioni PayPal: €" + commission);
-    }
-
-    private int calculateTotalPrice(booking booking) {
-        // Simula il calcolo del prezzo totale della prenotazione
-        int flightPrice = booking.getFlight().getPrice();
-        int hotelPrice = booking.getHotel().getPrice();
-        return flightPrice + hotelPrice;
     }
 
     public boolean isValid(String paymentInfo) {
