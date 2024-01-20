@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class main {
     public static void main(String[] args) {
         // Crea un cliente
-        customer customer = new customer("Mario Rossi", "mario.rossi@example.com", "1234567890");
+        customer customer = new customer("Mario Rossi", "mario.rossi@example.com", "1234567890", "a@b.c");
 
         // Crea un volo
         flight flight = new flight("ABC123", "Ryanair", "FCO", "CPH", LocalDateTime.of(2023, 11, 20, 10, 00), LocalDateTime.of(2023, 11, 20, 16, 00), 3, 100, 20);
@@ -23,6 +23,13 @@ public class main {
 
         // Crea una prenotazione
         booking booking = travelAgency.createBooking(customer, flight, hotel, strategy, "pending");
+
+        bookingAdapterImpl bookingAdapter = new bookingAdapterImpl(booking);
+        if (bookingAdapter.isValid(booking.getCustomer().getPaymentInfo())) {
+            bookingAdapter.pay(booking);
+        } else {
+            System.out.println("Informazioni di pagamento non valide.");
+        }
 
         // Effettua il pagamento
         strategy.pay(booking);
