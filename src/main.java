@@ -44,6 +44,8 @@ public class main {
             paymentStrategy.pay(booking);
         }
         scanner.close();
+
+        // TODO: inserire funzioalità della classi travelAgency e bookingAdapterImpl
     }
 
     // Creazione di voli e hotel
@@ -76,27 +78,23 @@ public class main {
             String paymentInfo;
             int paymentType = random.nextInt(4);
 
-            switch (paymentType) {
-                case 0:
+            paymentInfo = switch (paymentType) {
+                case 0 ->
                     // PayPal
-                    paymentInfo = "email@techadron.com";
-                    break;
-                case 1:
+                        "email@techadron.com";
+                case 1 ->
                     // Visa
-                    paymentInfo = "4" + generateRandomDigits(16); // Visa card starts with 4
-                    break;
-                case 2:
+                        "4" + generateRandomDigits(16); // Visa card starts with 4
+                case 2 ->
                     // AmericanExpress
-                    paymentInfo = generateAmericanExpressNumber(); // AmericanExpress card starts with 37 or 34
-                    break;
-                case 3:
+                        generateAmericanExpressNumber(); // AmericanExpress card starts with 37 or 34
+                case 3 -> {
                     // MasterCard
                     String masterCardPrefix = "5" + (random.nextInt(3) + 1); // Generates 1, 2, or 3
-                    paymentInfo = masterCardPrefix + generateRandomDigits(15); // MasterCard card starts with 51, 52, or 53
-                    break;
-                default:
-                    paymentInfo = "";
-            }
+                    yield masterCardPrefix + generateRandomDigits(15); // MasterCard card starts with 51, 52, or 53
+                }
+                default -> "";
+            };
 
             customers.add(new customer("Customer" + (i + 1), "email" + (i + 1) + "@techadron.com",
                     "123456789", paymentInfo));
@@ -124,16 +122,12 @@ public class main {
     // Restituisce casualmente una delle implementazioni di PaymentStrategy
     private static paymentStrategy getRandomPaymentStrategy() {
         Random random = new Random();
-        switch (random.nextInt(4)) {
-            case 0:
-                return new payPalStrategy();
-            case 1:
-                return new visaCreditCardStrategy();
-            case 2:
-                return new americanExpressCreditCardStrategy();
-            default:
-                return new masterCardCreditCardStrategy();
-        }
+        return switch (random.nextInt(4)) {
+            case 0 -> new payPalStrategy();
+            case 1 -> new visaCreditCardStrategy();
+            case 2 -> new americanExpressCreditCardStrategy();
+            default -> new masterCardCreditCardStrategy();
+        };
     }
 
 }
