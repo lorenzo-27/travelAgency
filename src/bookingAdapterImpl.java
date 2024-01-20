@@ -19,20 +19,6 @@ public class bookingAdapterImpl implements bookingAdapter {
     @Override
     public String getType() {
         // Restituisci il tipo di strategia di pagamento, se necessario
-        if (booking.getStrategy() instanceof payPalStrategy) {
-            return "PayPalStrategy";
-        }
-        else if (booking.getStrategy() instanceof visaCreditCardStrategy) {
-            return "VisaCardStrategy";
-        }
-        else if (booking.getStrategy() instanceof americanExpressCreditCardStrategy) {
-            return "AmericanExpressCardStrategy";
-        }
-        else if (booking.getStrategy() instanceof masterCardCreditCardStrategy) {
-            return "MasterCardCardStrategy";
-        }
-        else {
-            return "UnknownStrategy";
-        }
+        return booking.getStrategy().getType();
     }
 }
