@@ -2,14 +2,14 @@ import java.time.LocalDateTime;
 
 public class Flight {
 
-    private String id;
-    private String airline;
-    private String departureAirport;
-    private String arrivalAirport;
-    private LocalDateTime departureDateTime;
-    private LocalDateTime arrivalDateTime;
-    private int duration;
-    private int price;
+    private final String id;
+    private final String airline;
+    private final String departureAirport;
+    private final String arrivalAirport;
+    private final LocalDateTime departureDateTime;
+    private final LocalDateTime arrivalDateTime;
+    private final int duration;
+    private final int price;
     private int nAvailableSeats;
 
     public Flight(String id, String airline, String departureAirport, String arrivalAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int duration, int price, int nAvailableSeats) {
