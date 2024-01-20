@@ -1,4 +1,4 @@
-public class customer {
+public class Customer {
 
     private String name;
     private String email;
@@ -6,7 +6,7 @@ public class customer {
 
     private String paymentInfo;
 
-    public customer(String name, String email, String phone, String paymentInfo) {
+    public Customer(String name, String email, String phone, String paymentInfo) {
         this.name = name;
         this.email = email;
         this.phone = phone;

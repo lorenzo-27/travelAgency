@@ -2,18 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class concreteBookingMediator implements bookingMediator {
-    private List<booking> bookings;
-    private travelAgency travelAgency;
+public class ConcreteBookingMediator implements BookingMediator {
+    private List<Booking> Bookings;
+    private TravelAgency travelAgency;
 
-    public concreteBookingMediator(travelAgency travelAgency) {
+    public ConcreteBookingMediator(TravelAgency travelAgency) {
         this.travelAgency = travelAgency;
-        this.bookings = new ArrayList<>();
+        this.Bookings = new ArrayList<>();
     }
 
     @Override
-    public booking createBooking(customer customer, flight flight, hotel hotel, paymentStrategy strategy, String bookingStatus) {
-        booking booking = new booking(customer, flight, hotel, strategy, this, bookingStatus);
+    public Booking createBooking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy, String bookingStatus) {
+        Booking booking = new Booking(customer, flight, hotel, strategy, this, bookingStatus);
 
         if (flight.getNAvailableSeats() != 0 && hotel.getNAvailableRooms() != 0) {
             // Aggiorna i posti disponibili
@@ -21,7 +21,7 @@ public class concreteBookingMediator implements bookingMediator {
             hotel.decreaseNAvailableRooms();
 
             // Aggiorna lo stato della prenotazione
-            bookings.add(booking);
+            Bookings.add(booking);
             booking.setBookingStatus("confermata");
 
             // Esegui la prenotazione del volo e dell'hotel
@@ -48,24 +48,24 @@ public class concreteBookingMediator implements bookingMediator {
     }
 
     @Override
-    public void cancelBooking(booking booking) {
-        if (bookings.contains(booking) && Objects.equals(booking.getBookingStatus(), "annullata")) {
+    public void cancelBooking(Booking booking) {
+        if (Bookings.contains(booking) && Objects.equals(booking.getBookingStatus(), "annullata")) {
             System.out.println("La prenotazione è già stata annullata.");
         }
-        else if (!bookings.contains(booking)) {
+        else if (!Bookings.contains(booking)) {
             System.out.println("La prenotazione non è stata trovata.");
         }
         else {
             // Estrae il volo e l'hotel dalla prenotazione
-            flight flight = booking.getFlight();
-            hotel hotel = booking.getHotel();
+            Flight flight = booking.getFlight();
+            Hotel hotel = booking.getHotel();
 
             // Aggiorna i posti disponibili
             flight.increaseNAvailableSeats();
             hotel.increaseNAvailableRooms();
 
             // Aggiorna lo stato della prenotazione
-            bookings.remove(booking);
+            Bookings.remove(booking);
             booking.setBookingStatus("annullata");
 
             // Stampa messaggio di cancellazione.
@@ -76,7 +76,7 @@ public class concreteBookingMediator implements bookingMediator {
         }
     }
 
-    private void sendConfirmation(customer customer, String message) {
+    private void sendConfirmation(Customer customer, String message) {
         // Simula l'invio di una conferma al cliente
         System.out.println("Invio conferma a " + customer.getEmail() + ": " + message);
     }

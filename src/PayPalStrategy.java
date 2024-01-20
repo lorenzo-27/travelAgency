@@ -1,9 +1,9 @@
-public class payPalStrategy implements paymentStrategy {
+public class PayPalStrategy implements PaymentStrategy {
 
     private static final double PAYPAL_COMMISSION_RATE = 0.02; // 2% commissione di PayPal
 
     @Override
-    public void pay(booking booking) {
+    public void pay(Booking booking) {
         // Simula il processo di pagamento con PayPal
         if (!isValid(booking.getCustomer().getPaymentInfo())) {
             System.out.println("Informazioni di pagamento non valide!");

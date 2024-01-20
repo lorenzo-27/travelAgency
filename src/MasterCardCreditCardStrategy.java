@@ -1,9 +1,9 @@
-public class masterCardCreditCardStrategy implements paymentStrategy {
+public class MasterCardCreditCardStrategy implements PaymentStrategy {
 
     private static final double MASTERCARD_COMMISSION_RATE = 0.02; // 2% commissione di MasterCard
 
     @Override
-    public void pay(booking booking) {
+    public void pay(Booking booking) {
         // Simula il processo di pagamento con MasterCard
         if (!isValid(booking.getCustomer().getPaymentInfo())) {
             System.out.println("Informazioni di pagamento non valide!");

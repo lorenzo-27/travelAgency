@@ -1,9 +1,9 @@
-public class americanExpressCreditCardStrategy implements paymentStrategy {
+public class AmericanExpressCreditCardStrategy implements PaymentStrategy {
 
     private static final double AMERICAN_EXPRESS_COMMISSION_RATE = 0.04; // 4% commissione di American Express
 
     @Override
-    public void pay(booking booking) {
+    public void pay(Booking booking) {
         // Simula il processo di pagamento con American Express
         if (!isValid(booking.getCustomer().getPaymentInfo())) {
             System.out.println("Informazioni di pagamento non valide!");

@@ -1,9 +1,9 @@
-public class visaCreditCardStrategy implements paymentStrategy {
+public class VisaCreditCardStrategy implements PaymentStrategy {
 
     private static final double VISA_COMMISSION_RATE = 0.08; // 8% commissione di Visa
 
     @Override
-    public void pay(booking booking) {
+    public void pay(Booking booking) {
         // Simula il processo di pagamento con Visa
         if (!isValid(booking.getCustomer().getPaymentInfo())) {
             System.out.println("Informazioni di pagamento non valide!");

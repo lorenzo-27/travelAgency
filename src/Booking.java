@@ -1,13 +1,13 @@
-public class booking {
+public class Booking {
 
-    private customer customer;
-    private flight flight;
-    private hotel hotel;
-    private paymentStrategy strategy;
-    private bookingMediator mediator;
+    private Customer customer;
+    private Flight flight;
+    private Hotel hotel;
+    private PaymentStrategy strategy;
+    private BookingMediator mediator;
     private String bookingStatus;
 
-    public booking(customer customer, flight flight, hotel hotel, paymentStrategy strategy, bookingMediator mediator, String bookingStatus) {
+    public Booking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy, BookingMediator mediator, String bookingStatus) {
         this.customer = customer;
         this.flight = flight;
         this.hotel = hotel;
@@ -16,23 +16,23 @@ public class booking {
         this.bookingStatus = bookingStatus;
     }
 
-    public customer getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public flight getFlight() {
+    public Flight getFlight() {
         return flight;
     }
 
-    public hotel getHotel() {
+    public Hotel getHotel() {
         return hotel;
     }
 
-    public paymentStrategy getStrategy() {
-        return new bookingAdapterImpl(this);
+    public PaymentStrategy getStrategy() {
+        return new BookingAdapterImpl(this);
     }
 
-    public bookingMediator getMediator() {
+    public BookingMediator getMediator() {
         return mediator;
     }
 
@@ -52,7 +52,7 @@ public class booking {
         this.bookingStatus = bookingStatus;
     }
 
-    public int calculateTotalPrice(booking booking) {
+    public int calculateTotalPrice(Booking booking) {
         // Simula il calcolo del prezzo totale della prenotazione
         int flightPrice = booking.getFlight().getPrice();
         int hotelPrice = booking.getHotel().getPrice();

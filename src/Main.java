@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         // Creazione di voli, hotel e clienti
         Scanner scanner = new Scanner(System.in);
@@ -22,23 +22,23 @@ public class main {
         int numBookings = scanner.nextInt();
 
         // Creazione di voli, hotel e clienti
-        List<flight> flights = createFlights(numFlights);
-        List<hotel> hotels = createHotels(numHotels);
-        List<customer> customers = createCustomers(numCustomers);
+        List<Flight> Flights = createFlights(numFlights);
+        List<Hotel> Hotels = createHotels(numHotels);
+        List<Customer> Customers = createCustomers(numCustomers);
 
         // Creazione di un oggetto ConcreteBookingMediator
-        concreteBookingMediator mediator = new concreteBookingMediator(new travelAgency(null));
+        ConcreteBookingMediator mediator = new ConcreteBookingMediator(new TravelAgency(null));
 
         // Creazione di prenotazioni casuali per i clienti
         Random random = new Random();
         for (int i = 0; i < numBookings; i++) {
-            customer customer = customers.get(random.nextInt(customers.size()));
-            flight flight = flights.get(random.nextInt(flights.size()));
-            hotel hotel = hotels.get(random.nextInt(hotels.size()));
-            paymentStrategy paymentStrategy = getRandomPaymentStrategy();
+            Customer customer = Customers.get(random.nextInt(Customers.size()));
+            Flight flight = Flights.get(random.nextInt(Flights.size()));
+            Hotel hotel = Hotels.get(random.nextInt(Hotels.size()));
+            PaymentStrategy paymentStrategy = getRandomPaymentStrategy();
 
             // Crea una prenotazione
-            booking booking = mediator.createBooking(customer, flight, hotel, paymentStrategy, "pending");
+            Booking booking = mediator.createBooking(customer, flight, hotel, paymentStrategy, "pending");
 
             // Esegui il pagamento e gestisci la conferma/annullamento
             paymentStrategy.pay(booking);
@@ -49,29 +49,29 @@ public class main {
     }
 
     // Creazione di voli e hotel
-    private static List<flight> createFlights(int numFlights) {
-        List<flight> flights = new ArrayList<>();
+    private static List<Flight> createFlights(int numFlights) {
+        List<Flight> Flights = new ArrayList<>();
         for (int i = 0; i < numFlights; i++) {
-            flights.add(new flight("F" + (i + 1), "Airline" + (i + 1), "Departure" + (i + 1),
+            Flights.add(new Flight("F" + (i + 1), "Airline" + (i + 1), "Departure" + (i + 1),
                     "Arrival" + (i + 1), LocalDateTime.now(), LocalDateTime.now().plusHours(2),
                     120, 300, 20));
         }
-        return flights;
+        return Flights;
     }
 
-    private static List<hotel> createHotels(int numHotels) {
-        List<hotel> hotels = new ArrayList<>();
+    private static List<Hotel> createHotels(int numHotels) {
+        List<Hotel> Hotels = new ArrayList<>();
         for (int i = 0; i < numHotels; i++) {
-            hotels.add(new hotel("H" + (i + 1), "Hotel" + (i + 1), "Address" + (i + 1),
+            Hotels.add(new Hotel("H" + (i + 1), "Hotel" + (i + 1), "Address" + (i + 1),
                     "City" + (i + 1), "Country" + (i + 1), i + 1, 5));
         }
-        return hotels;
+        return Hotels;
     }
 
 
     // Creazione di clienti
-    private static List<customer> createCustomers(int numCustomers) {
-        List<customer> customers = new ArrayList<>();
+    private static List<Customer> createCustomers(int numCustomers) {
+        List<Customer> Customers = new ArrayList<>();
         Random random = new Random();
 
         for (int i = 0; i < numCustomers; i++) {
@@ -96,11 +96,11 @@ public class main {
                 default -> "";
             };
 
-            customers.add(new customer("Customer" + (i + 1), "email" + (i + 1) + "@techadron.com",
+            Customers.add(new Customer("Customer" + (i + 1), "email" + (i + 1) + "@techadron.com",
                     "123456789", paymentInfo));
         }
 
-        return customers;
+        return Customers;
     }
 
     private static String generateAmericanExpressNumber() {
@@ -120,13 +120,13 @@ public class main {
     }
 
     // Restituisce casualmente una delle implementazioni di PaymentStrategy
-    private static paymentStrategy getRandomPaymentStrategy() {
+    private static PaymentStrategy getRandomPaymentStrategy() {
         Random random = new Random();
         return switch (random.nextInt(4)) {
-            case 0 -> new payPalStrategy();
-            case 1 -> new visaCreditCardStrategy();
-            case 2 -> new americanExpressCreditCardStrategy();
-            default -> new masterCardCreditCardStrategy();
+            case 0 -> new PayPalStrategy();
+            case 1 -> new VisaCreditCardStrategy();
+            case 2 -> new AmericanExpressCreditCardStrategy();
+            default -> new MasterCardCreditCardStrategy();
         };
     }
 

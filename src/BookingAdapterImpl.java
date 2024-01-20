@@ -1,12 +1,12 @@
-public class bookingAdapterImpl implements bookingAdapter {
-    private booking booking;
+public class BookingAdapterImpl implements BookingAdapter {
+    private Booking booking;
 
-    public bookingAdapterImpl(booking booking) {
+    public BookingAdapterImpl(Booking booking) {
         this.booking = booking;
     }
 
     @Override
-    public void pay(booking booking) {
+    public void pay(Booking booking) {
         // Utilizza l'oggetto Booking per effettuare il pagamento
         booking.pay();
     }
