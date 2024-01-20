@@ -1,7 +1,26 @@
 public class masterCardCreditCardStrategy implements paymentStrategy {
+
+    private static final double MASTERCARD_COMMISSION_RATE = 0.02; // 2% commissione di MasterCard
+
     @Override
     public void pay(booking booking) {
-        // Effettua il pagamento con carta di credito MasterCard
+        // Simula il processo di pagamento con MasterCard
+        if (!isValid(booking.getCustomer().getPaymentInfo())) {
+            System.out.println("Informazioni di pagamento non valide!");
+            booking.getMediator().cancelBooking(booking);
+        }
+        else {
+            String customerEmail = booking.getCustomer().getEmail();
+            int totalPrice = booking.calculateTotalPrice(booking);
+
+            // Applica la commissione MasterCard
+            double commission = totalPrice * MASTERCARD_COMMISSION_RATE;
+            double totalAmount = totalPrice + commission;
+
+            // Esegue il pagamento
+            System.out.println("Effettuato il pagamento di €" + totalAmount + " con MasterCard per l'utente " + customerEmail);
+            System.out.println("Commissioni MasterCard: €" + commission);
+        }
     }
 
     @Override

@@ -5,16 +5,22 @@ public class americanExpressCreditCardStrategy implements paymentStrategy {
     @Override
     public void pay(booking booking) {
         // Simula il processo di pagamento con American Express
-        String customerEmail = booking.getCustomer().getEmail();
-        int totalPrice = booking.calculateTotalPrice(booking);
+        if (!isValid(booking.getCustomer().getPaymentInfo())) {
+            System.out.println("Informazioni di pagamento non valide!");
+            booking.getMediator().cancelBooking(booking);
+        }
+        else {
+            String customerEmail = booking.getCustomer().getEmail();
+            int totalPrice = booking.calculateTotalPrice(booking);
 
-        // Applica la commissione American Express
-        double commission = totalPrice * AMERICAN_EXPRESS_COMMISSION_RATE;
-        double totalAmount = totalPrice + commission;
+            // Applica la commissione American Express
+            double commission = totalPrice * AMERICAN_EXPRESS_COMMISSION_RATE;
+            double totalAmount = totalPrice + commission;
 
-        // Esegue il pagamento
-        System.out.println("Effettuare il pagamento di €" + totalAmount + " con American Express per l'utente " + customerEmail);
-        System.out.println("Commissioni American Express: €" + commission);
+            // Esegue il pagamento
+            System.out.println("Effettuare il pagamento di €" + totalAmount + " con American Express per l'utente " + customerEmail);
+            System.out.println("Commissioni American Express: €" + commission);
+        }
     }
 
     @Override

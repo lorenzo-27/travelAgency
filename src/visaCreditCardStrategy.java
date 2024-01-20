@@ -5,16 +5,22 @@ public class visaCreditCardStrategy implements paymentStrategy {
     @Override
     public void pay(booking booking) {
         // Simula il processo di pagamento con Visa
-        String customerEmail = booking.getCustomer().getEmail();
-        int totalPrice = booking.calculateTotalPrice(booking);
+        if (!isValid(booking.getCustomer().getPaymentInfo())) {
+            System.out.println("Informazioni di pagamento non valide!");
+            booking.getMediator().cancelBooking(booking);
+        }
+        else {
+            String customerEmail = booking.getCustomer().getEmail();
+            int totalPrice = booking.calculateTotalPrice(booking);
 
-        // Applica la commissione PayPal
-        double commission = totalPrice * VISA_COMMISSION_RATE;
-        double totalAmount = totalPrice + commission;
+            // Applica la commissione PayPal
+            double commission = totalPrice * VISA_COMMISSION_RATE;
+            double totalAmount = totalPrice + commission;
 
-        // Esegue il pagamento
-        System.out.println("Effettuato il pagamento di €" + totalAmount + " con Visa per l'utente " + customerEmail);
-        System.out.println("Commissioni Visa: €" + commission);
+            // Esegue il pagamento
+            System.out.println("Effettuato il pagamento di €" + totalAmount + " con Visa per l'utente " + customerEmail);
+            System.out.println("Commissioni Visa: €" + commission);
+        }
     }
 
     @Override
