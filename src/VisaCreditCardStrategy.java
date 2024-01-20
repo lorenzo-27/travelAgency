@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class VisaCreditCardStrategy implements PaymentStrategy {
 
     private static final double VISA_COMMISSION_RATE = 0.08; // 8% commissione di Visa
@@ -5,11 +7,7 @@ public class VisaCreditCardStrategy implements PaymentStrategy {
     @Override
     public void pay(Booking booking) {
         // Simula il processo di pagamento con Visa
-        if (!isValid(booking.getCustomer().getPaymentInfo())) {
-            System.out.println("Informazioni di pagamento non valide!");
-            booking.getMediator().cancelBooking(booking);
-        }
-        else {
+        if (!isValid(booking.getCustomer().getPaymentInfo()) && Objects.equals(booking.getBookingStatus(), "confermata")) {
             String customerEmail = booking.getCustomer().getEmail();
             int totalPrice = booking.calculateTotalPrice(booking);
 
@@ -20,6 +18,10 @@ public class VisaCreditCardStrategy implements PaymentStrategy {
             // Esegue il pagamento
             System.out.println("Effettuato il pagamento di €" + totalAmount + " con Visa per l'utente " + customerEmail);
             System.out.println("Commissioni Visa: €" + commission);
+        }
+        else {
+            System.out.println("Informazioni di pagamento non valide!");
+            booking.getMediator().cancelBooking(booking);
         }
     }
 
