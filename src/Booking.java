@@ -3,7 +3,7 @@ public class Booking {
     private final Customer customer;
     private final Flight flight;
     private final Hotel hotel;
-    private final PaymentStrategy strategy;
+    private PaymentStrategy strategy;
     private BookingMediator mediator;
     private String bookingStatus;
 
@@ -30,6 +30,10 @@ public class Booking {
 
     public PaymentStrategy getStrategy() {
         return new BookingAdapterImpl(this);
+    }
+
+    public void setStrategy(PaymentStrategy strategy) {
+        this.strategy = strategy;
     }
 
     public BookingMediator getMediator() {
