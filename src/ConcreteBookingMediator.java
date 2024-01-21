@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class ConcreteBookingMediator implements BookingMediator {
-    private final List<Booking> Bookings;
+    private final List<Booking> bookings;
 
     public ConcreteBookingMediator() {
-        this.Bookings = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
     @Override
@@ -19,7 +19,7 @@ public class ConcreteBookingMediator implements BookingMediator {
             hotel.decreaseNAvailableRooms();
 
             // Aggiorna lo stato della prenotazione
-            Bookings.add(booking);
+            bookings.add(booking);
             booking.setBookingStatus("confermata");
 
             // Esegui la prenotazione del volo e dell'hotel
@@ -42,10 +42,10 @@ public class ConcreteBookingMediator implements BookingMediator {
 
     @Override
     public void cancelBooking(Booking booking) {
-        if (Bookings.contains(booking) && Objects.equals(booking.getBookingStatus(), "annullata")) {
+        if (bookings.contains(booking) && Objects.equals(booking.getBookingStatus(), "annullata")) {
             System.out.println("La prenotazione è già stata annullata.");
         }
-        else if (!Bookings.contains(booking)) {
+        else if (!bookings.contains(booking)) {
             System.out.println("La prenotazione non è stata trovata.");
         }
         else {
@@ -58,7 +58,7 @@ public class ConcreteBookingMediator implements BookingMediator {
             hotel.increaseNAvailableRooms();
 
             // Aggiorna lo stato della prenotazione
-            Bookings.remove(booking);
+            bookings.remove(booking);
             booking.setBookingStatus("annullata");
 
             // Stampa messaggio di cancellazione.
