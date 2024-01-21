@@ -22,6 +22,7 @@ public class PayPalStrategy implements PaymentStrategy {
         else {
             System.out.println("Informazioni di pagamento non valide!");
             booking.getMediator().cancelBooking(booking);
+            booking.setBookingStatus("annullata");
         }
     }
 
