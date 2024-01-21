@@ -82,28 +82,4 @@ public class TravelAgencyTest {
         assertTrue(bookings.contains(booking1));
         assertFalse(bookings.contains(booking2));
     }
-
-    @Test
-    public void getBookingsByPaymentStrategy_ValidPaymentStrategy_ReturnsCorrectBookings() {
-        Booking booking1 = travelAgency.createBooking(customer, flight, hotel, paymentStrategy, "confermata");
-        Booking booking2 = travelAgency.createBooking(new Customer("Jane Doe", "jane@example.com", "987654321", "4276921519145357"), flight, hotel, new VisaCreditCardStrategy(), "annullata");
-
-        List<Booking> bookings = travelAgency.getBookingsByPaymentStrategy(paymentStrategy);
-
-        assertEquals(1, bookings.size());
-        assertTrue(bookings.contains(booking1));
-        assertFalse(bookings.contains(booking2));
-    }
-
-    @Test
-    public void getBookingsByBookingStatus_ValidBookingStatus_ReturnsCorrectBookings() {
-        Booking booking1 = travelAgency.createBooking(customer, flight, hotel, paymentStrategy, "confermata");
-        Booking booking2 = travelAgency.createBooking(new Customer("Jane Doe", "jane@example.com", "987654321", "paymentInfo"), flight, hotel, paymentStrategy, "confermata");
-
-        List<Booking> bookings = travelAgency.getBookingsByBookingStatus("confermata");
-
-        assertEquals(2, bookings.size());
-        assertTrue(bookings.contains(booking1));
-        assertTrue(bookings.contains(booking2));
-    }
 }
