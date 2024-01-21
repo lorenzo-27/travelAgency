@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class BookingAdapterImpl implements BookingAdapter {
     private final Booking booking;
 
@@ -19,7 +21,6 @@ public class BookingAdapterImpl implements BookingAdapter {
 
     @Override
     public String getType() {
-        // Restituisci il tipo di strategia di pagamento, se necessario
-        return booking.getStrategy().getType();
+        return "Adapter";
     }
 }
