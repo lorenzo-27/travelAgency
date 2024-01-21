@@ -1,38 +1,26 @@
 import java.util.Objects;
 
-public class AmericanExpressCreditCardStrategy implements PaymentStrategy {
-
+public class AmericanExpressCreditCardStrategy extends CreditCardPaymentStrategy {
     private static final double AMERICAN_EXPRESS_COMMISSION_RATE = 0.04; // 4% commissione di American Express
 
     @Override
-    public void pay(Booking booking) {
-        // Simula il processo di pagamento con American Express
-        if (isValid(booking.getCustomer().getPaymentInfo()) && Objects.equals(booking.getBookingStatus(), "confermata")) {
-            String customerEmail = booking.getCustomer().getEmail();
-            int totalPrice = booking.calculateTotalPrice(booking);
-
-            // Applica la commissione American Express
-            double commission = totalPrice * AMERICAN_EXPRESS_COMMISSION_RATE;
-            double totalAmount = totalPrice + commission;
-
-            // Esegue il pagamento
-            System.out.println("Effettuare il pagamento di €" + totalAmount + " con American Express per l'utente " + customerEmail);
-            System.out.println("Commissioni American Express: €" + commission);
-        }
-        else {
-            System.out.println("Informazioni di pagamento non valide!");
-            booking.getMediator().cancelBooking(booking);
-            booking.setBookingStatus("annullata");
-        }
+    protected double getCommissionRate() {
+        return AMERICAN_EXPRESS_COMMISSION_RATE;
     }
 
     @Override
-    public boolean isValid(String creditCardNumber) {
-        return creditCardNumber.startsWith("34") || creditCardNumber.startsWith("37") && creditCardNumber.length() == 15;
+    protected void processPayment(double totalAmount, double commission, String customerEmail) {
+        System.out.println("Effettuare il pagamento di €" + totalAmount + " con American Express per l'utente " + customerEmail);
+        System.out.println("Commissioni American Express: €" + commission);
     }
 
     @Override
-    public String getType() {
-        return "American Express";
+    protected String getCardNumberPattern() {
+        return "3[47][0-9]{13}";
+    }
+
+    @Override
+    protected int getCardNumberLength() {
+        return 15;
     }
 }
