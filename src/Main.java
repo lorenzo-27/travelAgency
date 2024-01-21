@@ -45,7 +45,7 @@ public class Main {
         }
         scanner.close();
 
-        // TODO: inserire funzioalità della classi travelAgency e bookingAdapterImpl
+        // TODO: inserire funzionalità della classi travelAgency e bookingAdapterImpl
     }
 
     // Creazione di voli e hotel
