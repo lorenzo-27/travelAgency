@@ -29,7 +29,7 @@ public class Booking {
     }
 
     public PaymentStrategy getStrategy() {
-        return new BookingAdapterImpl(this);
+        return strategy;
     }
 
     public void setStrategy(PaymentStrategy strategy) {
