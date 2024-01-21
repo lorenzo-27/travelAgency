@@ -36,9 +36,9 @@ public class ConcreteBookingMediatorTest {
 
         assertNotNull(booking);
 
-        assertEquals(booking.getBookingStatus(), "confermata");
-        assertEquals(booking.getFlight().getNAvailableSeats(), 99); // 1 seat decreased
-        assertEquals(booking.getHotel().getNAvailableRooms(), 99); // 1 room decreased
+        assertEquals("confermata", booking.getBookingStatus());
+        assertEquals(99, booking.getFlight().getNAvailableSeats()); // 1 seat decreased
+        assertEquals(99, booking.getHotel().getNAvailableRooms()); // 1 room decreased
     }
 
     @Test
@@ -50,9 +50,9 @@ public class ConcreteBookingMediatorTest {
 
         assertNotNull(booking);
 
-        assertEquals(booking.getBookingStatus(), "annullata");
-        assertEquals(booking.getFlight().getNAvailableSeats(), 0); // no change
-        assertEquals(booking.getHotel().getNAvailableRooms(), 0); // no change
+        assertEquals("annullata", booking.getBookingStatus());
+        assertEquals(0, booking.getFlight().getNAvailableSeats()); // no change
+        assertEquals(0, booking.getHotel().getNAvailableRooms()); // no change
     }
 
     @Test
@@ -61,9 +61,9 @@ public class ConcreteBookingMediatorTest {
 
         mediator.cancelBooking(booking);
 
-        assertEquals(booking.getBookingStatus(), "annullata");
-        assertEquals(flight.getNAvailableSeats(), 100); // 1 seat increased
-        assertEquals(hotel.getNAvailableRooms(), 100); // 1 room increased
+        assertEquals("annullata", booking.getBookingStatus());
+        assertEquals(100, flight.getNAvailableSeats()); // 1 seat increased
+        assertEquals(100, hotel.getNAvailableRooms()); // 1 room increased
     }
 
     @Test
@@ -71,12 +71,12 @@ public class ConcreteBookingMediatorTest {
         Booking booking = mediator.createBooking(customer, flight, hotel, paymentStrategy, "pending");
         mediator.cancelBooking(booking); // Cancel once
 
-        assertEquals(booking.getBookingStatus(), "annullata");
+        assertEquals("annullata", booking.getBookingStatus());
 
         // Attempt to cancel again
         mediator.cancelBooking(booking);
 
-        assertEquals(booking.getBookingStatus(), "annullata"); // Status remains the same
+        assertEquals("annullata", booking.getBookingStatus()); // Status remains the same
     }
 
     @Test
@@ -86,7 +86,7 @@ public class ConcreteBookingMediatorTest {
         // Attempt to cancel a booking that was not created through the mediator
         mediator.cancelBooking(booking);
 
-        assertEquals(flight.getNAvailableSeats(), 100); // No change
-        assertEquals(hotel.getNAvailableRooms(), 100); // No change
+        assertEquals(100, flight.getNAvailableSeats()); // No change
+        assertEquals(100, hotel.getNAvailableRooms()); // No change
     }
 }
