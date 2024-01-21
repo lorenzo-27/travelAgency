@@ -120,4 +120,31 @@ public class CreditCardPaymentStrategyTest {
         assertEquals("", invalidStrategy.getType());
     }
 
+    @Test
+    public void testChangePaymentStrategy() {
+        // Creazione dei componenti necessari per le prenotazioni
+        Customer customer = new Customer("John Doe", "john.doe@example.com", "123456789", "valid_payment_info");
+        Flight flight = new Flight("F001", "AirlineX", "AirportA", "AirportB", LocalDateTime.now(), LocalDateTime.now().plusHours(2), 120, 200, 100);
+        Hotel hotel = new Hotel("H001", "Best Hotel", "123 Main St", "CityX", "CountryY", 4, 100);
+
+        // Creazione delle strategie di pagamento
+        PaymentStrategy initialStrategy = new MasterCardCreditCardStrategy();
+        PaymentStrategy newStrategy = new VisaCreditCardStrategy();
+
+        // Creazione delle prenotazioni
+        Booking booking1 = new Booking(customer, flight, hotel, initialStrategy, new ConcreteBookingMediator(), "pending");
+        Booking booking2 = new Booking(customer, flight, hotel, initialStrategy, new ConcreteBookingMediator(), "pending");
+
+        // Verifica della strategia di pagamento iniziale
+        assertEquals("MasterCard", booking1.getStrategy().getType());
+        assertEquals("MasterCard", booking2.getStrategy().getType());
+
+        // Cambio della strategia di pagamento per la prima prenotazione
+        booking1.setStrategy(newStrategy);
+
+        // Verifica che la strategia di pagamento sia stata cambiata correttamente
+        assertEquals("Visa", booking1.getStrategy().getType());
+        assertEquals("MasterCard", booking2.getStrategy().getType()); // La seconda prenotazione mantiene la strategia iniziale
+    }
+
 }
