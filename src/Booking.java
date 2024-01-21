@@ -4,7 +4,7 @@ public class Booking {
     private final Flight flight;
     private final Hotel hotel;
     private final PaymentStrategy strategy;
-    private final BookingMediator mediator;
+    private BookingMediator mediator;
     private String bookingStatus;
 
     public Booking(Customer customer, Flight flight, Hotel hotel, PaymentStrategy strategy, BookingMediator mediator, String bookingStatus) {
@@ -34,6 +34,10 @@ public class Booking {
 
     public BookingMediator getMediator() {
         return mediator;
+    }
+
+    public void setMediator(BookingMediator mediator) {
+        this.mediator = mediator;
     }
 
     public void pay() {
