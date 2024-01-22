@@ -43,7 +43,7 @@ public class BookingTest {
         BookingMediator newMediator = Mockito.mock(BookingMediator.class);
 
         booking.setMediator(originalMediator);
-        assertEquals(originalMediator, booking.getMediator());
+        assertSame(originalMediator, booking.getMediator());
 
         booking.setMediator(newMediator);
         assertSame(newMediator, booking.getMediator());
