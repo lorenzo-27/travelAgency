@@ -56,8 +56,8 @@ public class Booking {
         this.bookingStatus = bookingStatus;
     }
 
+    // Simula il calcolo del prezzo totale della prenotazione
     public int calculateTotalPrice(Booking booking) {
-        // Simula il calcolo del prezzo totale della prenotazione
         int flightPrice = booking.getFlight().getPrice();
         int hotelPrice = booking.getHotel().getPrice();
         return flightPrice + hotelPrice;

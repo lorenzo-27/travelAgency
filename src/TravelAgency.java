@@ -23,7 +23,7 @@ public class TravelAgency {
     }
 
 
-    // The following methods are used to add some functionality to the travel agency
+    // I seguenti metodi sono stati aggiunti per aggiungere funzionalità alla classe TravelAgency
     public List<Booking> getAllBookings() {
         return new ArrayList<>(bookings);
     }

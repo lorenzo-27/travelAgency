@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Creazione di voli, hotel e clienti
+        // Inserimento dei dati
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Inserisci il numero di voli: ");
@@ -40,12 +40,10 @@ public class Main {
             // Crea una prenotazione
             Booking booking = mediator.createBooking(customer, flight, hotel, paymentStrategy, "pending");
 
-            // Esegui il pagamento e gestisci la conferma/annullamento
+            // Esegue il pagamento e gestisce la conferma/annullamento
             paymentStrategy.pay(booking);
         }
         scanner.close();
-
-        // TODO: inserire funzionalità della classi travelAgency e bookingAdapterImpl
     }
 
     // Creazione di voli e hotel
@@ -103,6 +101,8 @@ public class Main {
         return Customers;
     }
 
+
+    // Generazione di numeri di carta di credito casuali per AmericanExpress
     private static String generateAmericanExpressNumber() {
         Random random = new Random();
         // Choose between 34 or 37 as the starting digits for AmericanExpress
@@ -110,6 +110,8 @@ public class Main {
         return startingDigits + generateRandomDigits(14); // AmericanExpress card has a total length of 15 digits
     }
 
+
+    // Generazione di numeri di carta di credito casuali
     private static String generateRandomDigits(int length) {
         Random random = new Random();
         StringBuilder sb = new StringBuilder();

@@ -69,8 +69,8 @@ public class ConcreteBookingMediator implements BookingMediator {
         }
     }
 
+    // Simula l'invio di una conferma al cliente
     private void sendConfirmation(Customer customer, String message) {
-        // Simula l'invio di una conferma al cliente
         System.out.println("Invio conferma a " + customer.getEmail() + ": " + message);
     }
 }
